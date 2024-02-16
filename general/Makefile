@@ -6,16 +6,47 @@ export MakeInc_dir=${SRCROOT}/makedefs/MakeInc.dir
 include $(MakeInc_cmd)
 include $(MakeInc_def)
 
-DATAFILES =  \
-	vnode_pager.h
+INSTINC_SUBDIRS =	\
+	architecture	\
+	mach-o			\
+	sys
 
-INSTALL_MI_LIST	= ${DATAFILES}
+INSTINC_SUBDIRS_X86_64 =	\
+	architecture
 
-INSTALL_MI_DIR = vm
+INSTINC_SUBDIRS_X86_64H =	\
+	architecture
 
-EXPORT_MI_LIST	= ${DATAFILES}
+INSTINC_SUBDIRS_ARM =	\
+	architecture
 
-EXPORT_MI_DIR = vm
+INSTINC_SUBDIRS_ARM64 =	\
+	architecture
+
+EXPORT_FILES = \
+	Availability.h	\
+	AvailabilityInternal.h	\
+	AvailabilityMacros.h
+
+KERNEL_FILES = \
+	stdarg.h	\
+	stdatomic.h	\
+	stdbool.h	\
+	stddef.h	\
+	stdint.h	\
+	ptrauth.h
+
+INSTALL_MI_LIST =
+
+INSTALL_MI_DIR = .
+
+INSTALL_KF_MI_LIST = ${KERNEL_FILES}
+
+INSTALL_KF_MI_LCL_LIST = ${KERNEL_FILES}
+
+EXPORT_MI_LIST = ${EXPORT_FILES} ${KERNEL_FILES}
+
+EXPORT_MI_DIR = .
 
 include $(MakeInc_rule)
 include $(MakeInc_dir)
